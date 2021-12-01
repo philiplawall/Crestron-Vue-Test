@@ -5,10 +5,16 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "archive": "ch5-cli archive -p test3 -d dist -o ch5dist",
+    "upload": "ch5-cli deploy -H 192.168.200.126 -t touchscreen -p ch5dist/test3.ch5z",
+    "au": "yarn build && yarn archive && yarn upload",
+    "http": "http-server dist"
   },
   "dependencies": {
+    "@crestron/ch5-crcomlib": "^1.2.0",
     "core-js": "^3.6.5",
+    "reconnecting-websocket": "^4.4.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
