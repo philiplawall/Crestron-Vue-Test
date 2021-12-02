@@ -14,17 +14,17 @@ export default function createWebSocketPlugin(client = defaultClient()) {
         if (data.type == "digital") {
           store.dispatch("storeDigitalSignal", {
             id: data.id,
-            value: data.value,
+            value: data.dValue,
           });
         }else if (data.type == "analog") {
           store.dispatch("storeAnalogSignal", {
             id: data.id,
-            value: data.value,
+            value: data.aValue,
           });
         }else if (data.type == "serial") {
           store.dispatch("storeSerialSignal", {
             id: data.id,
-            value: data.value,
+            value: data.sValue,
           });
         }else{
           console.log("no data type")
@@ -54,7 +54,7 @@ export default function createWebSocketPlugin(client = defaultClient()) {
           JSON.stringify({
             type: "digital",
             id: mutation.payload.id,
-            value: mutation.payload.value,
+            dValue: mutation.payload.value,
           })
         );
       }else if (mutation.type == "sendAnalogSignal") {
@@ -62,7 +62,7 @@ export default function createWebSocketPlugin(client = defaultClient()) {
           JSON.stringify({
             type: "analog",
             id: mutation.payload.id,
-            value: mutation.payload.value,
+            aValue: mutation.payload.value,
           })
         );
       }else if (mutation.type == "sendSerialSignal") {
@@ -70,7 +70,7 @@ export default function createWebSocketPlugin(client = defaultClient()) {
           JSON.stringify({
             type: "serial",
             id: mutation.payload.id,
-            value: mutation.payload.value,
+            sValue: mutation.payload.value,
           })
         );
       }
